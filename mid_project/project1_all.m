@@ -5,23 +5,23 @@
  
 % TODO: Set the length of the signal
 % Write your code here... n = ????;
-
+n = 50;
 
 % TODO: Set the number of atoms in the dictionary
 % Write your code here... m = ????;
-
+m = 100;
 
 % TODO: Set the maximum number of non-zeros in the generated vector
 % Write your code here... s_max = ????;
-
+s_max = 15;
 
 % TODO: Set the minimal entry value
 % Write your code here... min_coeff_val = ????;
-
+min_coeff_val = 1;
 
 % TODO: Set the maximal entry value
 % Write your code here... max_coeff_val = ????;
-
+max_coeff_val = 3;
 
 % Number of realizations
 num_realizations = 200;
@@ -29,18 +29,17 @@ num_realizations = 200;
 % Base seed: A non-negative integer used to reproduce the results
 % TODO: Set an arbitrary value for base seed
 % Write your code here... base_seed = ????;
-
+base_seed = 5;
 
 %% Create the dictionary
  
 % TODO: Create a random matrix A of size (n x m)
 % Write your code here... A = ????;
-
+A = randn( n, m );
  
 % TODO: Normalize the columns of the matrix to have a unit norm
 % Write your code here... A_normalized = ????;
-
-
+A_normalized = A / vecnorm(A);
 
 %% Create data and run OMP and BP
  
