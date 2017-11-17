@@ -39,7 +39,8 @@ A = randn( n, m );
  
 % TODO: Normalize the columns of the matrix to have a unit norm
 % Write your code here... A_normalized = ????;
-A_normalized = A / vecnorm(A);
+A_normalized = norm_columns(A);
+
 
 %% Create data and run OMP and BP
  
@@ -73,11 +74,11 @@ for s = 1:s_max
         
         % TODO: Draw at random the coefficients of x in true_supp locations
         % Write your code here... x = ????;
-        
+        [x, true_supp] = generate_x0(n, s, min_coeff_val, max_coeff_val);
         
         % TODO: Create the signal b
         % Write your code here... b = ????;
-        
+        b = A*x;
         
         % TODO: Run OMP
         % Write your code here... x_omp = omp(????, ????, ????);
