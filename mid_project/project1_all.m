@@ -78,23 +78,21 @@ for s = 1:s_max
         
         % TODO: Create the signal b
         % Write your code here... b = ????;
-        b = A*x;
+        b = A_normalized*x;
         
         % TODO: Run OMP
         % Write your code here... x_omp = omp(????, ????, ????);
+        [ x_omp, estimated_supp] = omp(A_normalized, b, s );
         
-                
         % TODO: Compute the relative L2 error
         % Write your code here... L2_error(s,experiment,1) = ????;
-        
         
         % TODO: Get the indices of the estimated support
         % Write your code here... estimated_supp = ????;
         
-        
         % TODO: Compute the support recovery score
         % Write your code here... support_error(s,experiment,1) = ????;
-        
+        support_error(s, experiment, 1) = compute_support_error( true_supp, estimated_supp );
         
         % TODO: Run BP
         % Write your code here... x_lp = lp(????, ????, ????);
@@ -111,7 +109,7 @@ for s = 1:s_max
         
         % TODO: Compute the support recovery error
         % Write your code here... support_error(s,experiment,2) = ????;
-                
+        support_error(s, experiment, 2) = compute_support_error( true_supp, estimated_supp );                
  
     end
     
