@@ -99,7 +99,7 @@ for s = 1:s_max
         
         % TODO: Run BP
         % Write your code here... x_lp = lp(????, ????, ????);
-        [ x_lp, estimated_supp] = lp( A_normalized, b, tol);
+        [ x_lp, estimated_supp] = lp( A_normalized, b, tol_lp);
         
         %threshold the result
         x_lp( abs( x_lp) < tol_lp ) = 0;
