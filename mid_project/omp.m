@@ -34,6 +34,7 @@ while ( k <= max_k )
    
     %add i0 to the support
     %sort the columns so we do not change the basis elements
+    %may be not needed
     supp = sort( [supp i0] );
     
     %preallocation of the columns
@@ -47,7 +48,7 @@ while ( k <= max_k )
     %solve the least squares problem
     xk = lsqminnorm(As,b);
 
-    x    = zeros(n,1);
+    x  = zeros(n,1);
 
     %put the values back into the solution
     for i = 1:size( supp, 2 )
@@ -64,16 +65,7 @@ while ( k <= max_k )
     end
 end
 
-
-
-
-
-
-
-
-
-% TODO: Implement the OMP algorithm
-% Write you code here... x = ????;
+estimated_supp = supp;
 
 
 end
