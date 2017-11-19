@@ -74,11 +74,11 @@ for s = 1:s_max
         
         % TODO: Draw at random the coefficients of x in true_supp locations
         % Write your code here... x = ????;
-        [x, true_supp] = generate_x0(n, s, min_coeff_val, max_coeff_val);
+        [x, true_supp] = generate_x0(m, s, min_coeff_val, max_coeff_val);
         
         % TODO: Create the signal b
         % Write your code here... b = ????;
-        b = A_normalized'*(x');
+        b = A_normalized*x';
         
         % TODO: Run OMP
         % Write your code here... x_omp = omp(????, ????, ????);
@@ -86,7 +86,7 @@ for s = 1:s_max
         
         % TODO: Compute the relative L2 error
         % Write your code here... L2_error(s,experiment,1) = ????;
-        L2_error(s,experiment,1) = norm( x, x_omp) / norm( x );
+        L2_error(s,experiment,1) = norm( x' - x_omp) / norm( x );
         
         % TODO: Get the indices of the estimated support
         % Write your code here... estimated_supp = ????;
@@ -104,7 +104,7 @@ for s = 1:s_max
         
         % TODO: Compute the relative L2 error
         % Write your code here... L2_error(s,experiment,2) = ????;
-        L2_error(s,experiment,1) = norm( x, x_lp) / norm( x );
+        L2_error(s,experiment,1) = norm( x' - x_lp) / norm( x );
         
         % TODO: Get the indices of the estimated support, where the
         % coeffecients are larger (in absolute value) than eps_coeff

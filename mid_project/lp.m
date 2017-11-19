@@ -27,7 +27,7 @@ estimated_supp = [];
 
 for i=1:m
     if ( x(i) ~= 0 )
-        estimated_supp = [estimated_supp i]    
+        estimated_supp = [estimated_supp i];    
     end
 end
 

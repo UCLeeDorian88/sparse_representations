@@ -25,7 +25,7 @@ while ( k <= max_k )
     i0 = 1;
     for i = 1:m
         ai = A(:,i);
-        v = abs( dot(ai'*r));
+        v = abs( ai'*r);
         if ( v > e_i0)
             i0  = i;
             e_i0 = v;
@@ -38,7 +38,7 @@ while ( k <= max_k )
     supp = sort( [supp i0] );
     
     %preallocation of the columns
-    As = zeroes( n, size(supp, 2) );
+    As = [];
 
     %form As
     for i = 1:size( supp, 2 )
@@ -46,7 +46,8 @@ while ( k <= max_k )
     end
     
     %solve the least squares problem
-    xk = lsqminnorm(As,b);
+    %xk = lsqminnorm(As,b);
+    xk = pinv(As)*b;
 
     x  = zeros(n,1);
 
