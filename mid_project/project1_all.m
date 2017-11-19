@@ -86,7 +86,9 @@ for s = 1:s_max
         
         % TODO: Compute the relative L2 error
         % Write your code here... L2_error(s,experiment,1) = ????;
-        L2_error(s,experiment,1) = norm( x' - x_omp) / norm( x );
+        n0 = norm(x' - x_omp);
+        n1 = norm(x);
+        L2_error(s,experiment,1) = (n0 * n0) / (n1 * n1);
         
         % TODO: Get the indices of the estimated support
         % Write your code here... estimated_supp = ????;
@@ -104,7 +106,9 @@ for s = 1:s_max
         
         % TODO: Compute the relative L2 error
         % Write your code here... L2_error(s,experiment,2) = ????;
-        L2_error(s,experiment,1) = norm( x' - x_lp) / norm( x );
+        n0 = norm(x' - x_lp);
+        n1 = norm(x);
+        L2_error(s,experiment,1) = (n0 * n0) / (n1 * n1);
         
         % TODO: Get the indices of the estimated support, where the
         % coeffecients are larger (in absolute value) than eps_coeff
