@@ -10,7 +10,7 @@ function [x, estimated_supp] = omp(A, b, max_k)
 n  = size(A,1);
 m  = size(A,2);
 
-x    = zeros(n,1);
+x    = zeros(m,1);
 r    = b;
 supp = [];
 k    = 0;
