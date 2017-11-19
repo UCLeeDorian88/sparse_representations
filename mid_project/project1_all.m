@@ -78,7 +78,7 @@ for s = 1:s_max
         
         % TODO: Create the signal b
         % Write your code here... b = ????;
-        b = A_normalized*x;
+        b = A_normalized'*(x');
         
         % TODO: Run OMP
         % Write your code here... x_omp = omp(????, ????, ????);
