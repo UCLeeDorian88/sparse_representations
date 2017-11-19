@@ -7,8 +7,8 @@ function [x, estimated_supp] = omp(A, b, max_k)
 % The solution is returned in the vector x
 
 % Initialize the vector x
-m  = size(A,1);
-n  = size(A,2);
+n  = size(A,1);
+m  = size(A,2);
 
 x    = zeros(n,1);
 r    = b;
@@ -35,7 +35,8 @@ while ( k <= max_k )
     %add i0 to the support
     %sort the columns so we do not change the basis elements
     %may be not needed
-    supp = sort( [supp i0] );
+    %supp = sort( [supp i0] );
+    supp = [supp i0];
     
     %preallocation of the columns
     As = [];
@@ -49,7 +50,7 @@ while ( k <= max_k )
     %xk = lsqminnorm(As,b);
     xk = pinv(As)*b;
 
-    x  = zeros(n,1);
+    x  = zeros(m,1);
 
     %put the values back into the solution
     for i = 1:size( supp, 2 )
@@ -61,7 +62,7 @@ while ( k <= max_k )
     
     %bail out if we are very close
     n_r = norm(r);
-    if ( n_r < 0.001)
+    if ( n_r < 0.00001)
         break;
     end
 end
