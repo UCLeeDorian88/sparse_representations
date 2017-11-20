@@ -21,10 +21,15 @@ x  = zeros(m,1);
 
 f = ones( 2 * m, 1 );
 
+%represent x = u-v, where u and v are positive
+%form the min_z, s.t. b = [A -A]z, z>=0, which is equivalent to our P1
+%problem
+
 x0 = linprog(f, [A, -A], b, [A, -A], b , zeros(2*m,1), 100000 * ones(2*m,1), 50000, options);
 
 estimated_supp = [];
 
+%obtain x from u and v
 for i=1:m
    x(i) =  x0(i) - x0(i + m);
 end
