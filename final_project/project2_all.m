@@ -8,28 +8,28 @@ clear; clc;
  
 % TODO: Set the size of the desired image is (n x n)
 % Write your code here... n = ????;
-
+n = 40;
 
 % TODO: Set the number of atoms
 % Write your code here... m = ????;
-
+m = 2 * (n * n);
 
 % TODO: Set the percentage of known data
 % Write your code here... p = ????;
-
+p = 0.4;
 
 % TODO: Set the noise std
 % Write your code here... sigma = ????;
-
+sigma = 0.05;
 
 % TODO: Set the cardinality of the representation
 % Write your code here... true_k = ????;
-
+true_k = 10;
 
 % Base seed - A non-negative integer used to reproduce the results
 % TODO: Set an arbitrary value for base_seed
 % Write your code here... base_seed = ????;
-
+base_seed = 5;
 
 % Run the different algorithms for num_experiments and average the results
 num_experiments = 10;
@@ -39,8 +39,8 @@ num_experiments = 10;
  
 % TODO: initialize A with zeros
 % Write your code here... A = ????;
+A = zeros( n * n, m );
 
- 
 % In this part we construct A by creating its atoms one by one, where
 % each atom is a rectangle of random size (in the range 5-20 pixels),
 % position (uniformly spread in the area of the image), and sign. 
@@ -55,26 +55,55 @@ for i=1:size(A,2)
         
         % TODO: Create a rectangle of random size and position
         % Write your code here... atom = ????;
-
-
+        atom = zeros(n,n);
         
+        width      = round(randn_bounds(6,21));
+        height     = round(randn_bounds(6,21));
+
+        top_left_x = round(randn_bounds(1,41));
+        top_left_y = round(randn_bounds(1,41));
+        
+        bottom_right_x = top_left_x + width;
+        bottom_right_y = top_left_y + height;
+
+        if ( bottom_right_x > 41 )
+            continue; 
+        end
+        
+        if ( bottom_right_y > 41 )
+            continue; 
+        end
+        
+        sign   = ( round(rand()) * 2 - 1 );
+        
+        for ( i = top_left_x:bottom_right_x )
+            for ( j = top_left_y:bottom_right_y )
+            atom(i,j) = sign;
+            end
+        end
         
         % Verify that the atom is not empty or nearly so
-        if norm(atom(:)) > 1e-5
+        n_orm = norm(atom(:));
+        if n_orm > 1e-5
             empty_atom_flag = 0;
             
             % TODO: Normalize the atom
             % Write your code here... atom = ????;
-        
-            
+            atom = atom / n_orm;
+
+            %imagesc(atom);
+            %colormap(gray);
             
             % Assign the generated atom to the matrix A
             A(:,i) = atom(:);
         end
         
     end
-    
 end
+
+%        imagesc(atom,[0.0 1.0/av]);
+%        colormap(gray);
+
  
 %% Oracle Inpainting
  
