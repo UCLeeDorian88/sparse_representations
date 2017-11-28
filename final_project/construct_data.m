@@ -26,18 +26,26 @@ n = sqrt(n_squared);
  
 % TODO: Draw at random the locations of the non-zeros
 % Write your code here... nnz_locs = ????;
-
+nnz_locs = randperm( 2*n , k);
+nnz_vals = zeros(k,1);
  
 % TODO: Draw at random the values of the coefficients
 % Write your code here... nnz_vals = ????;
-
+for i = 1:size(nnz_locs,2)
+    nnz_vals( i ) = normrnd(0,1);
+end
  
 % TODO: Create a k-sparse vector x0 of length m given the nnz_locs and nnz_vals
 % Write your code here... x0 = ????;
+x0 = zeros( m, 1);
 
+for i = 1:size(nnz_locs,2)
+    x0( nnz_locs(i) ) = nnz_vals(i);
+end
  
 % TODO: Given A and x0, compute the signal b0
 % Write your code here... b0 = ????;
+b0 = A*x0;
 
  
 %% Create the measured data vector b of size n^2
@@ -45,7 +53,7 @@ n = sqrt(n_squared);
 % TODO: Compute the dynamic range
 % Write your code here... dynamic_range = ????;
 
- 
+dynamic_range = 0;
 % Create a noise vector
 noise_std = sigma*dynamic_range;
 noise = noise_std*randn(n^2,1);

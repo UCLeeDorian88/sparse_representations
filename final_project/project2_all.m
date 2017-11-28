@@ -66,11 +66,11 @@ for i=1:size(A,2)
         bottom_right_x = top_left_x + width;
         bottom_right_y = top_left_y + height;
 
-        if ( bottom_right_x > 41 )
+        if ( bottom_right_x > 40 )
             continue; 
         end
         
-        if ( bottom_right_y > 41 )
+        if ( bottom_right_y > 40 )
             continue; 
         end
         
