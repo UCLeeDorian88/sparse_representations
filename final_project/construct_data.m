@@ -47,7 +47,11 @@ end
 % Write your code here... b0 = ????;
 b0 = A*x0;
 
- 
+%debug of the mondrian image
+%mat = vec2mat(b0,40);
+%imagesc(mat);
+%colormap(gray);
+
 %% Create the measured data vector b of size n^2
  
 % TODO: Compute the dynamic range

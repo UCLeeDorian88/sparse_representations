@@ -29,7 +29,7 @@ true_k = 10;
 % Base seed - A non-negative integer used to reproduce the results
 % TODO: Set an arbitrary value for base_seed
 % Write your code here... base_seed = ????;
-base_seed = 5;
+base_seed = 0;
 
 % Run the different algorithms for num_experiments and average the results
 num_experiments = 10;
