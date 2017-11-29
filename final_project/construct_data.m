@@ -57,30 +57,46 @@ b0 = A*x0;
 % TODO: Compute the dynamic range
 % Write your code here... dynamic_range = ????;
 
-dynamic_range = 0;
+dynamic_range = max(b0) - min(b0);
+
 % Create a noise vector
 noise_std = sigma*dynamic_range;
 noise = noise_std*randn(n^2,1);
  
 % TODO: Add noise to the original image
 % Write your code here... b0_noisy = ????;
-
+b0_noisy = b0 + noise;
  
+%mat = vec2mat(b0_noisy,40);
+%imagesc(mat);
+%colormap(gray);
  
 %% Create the sampling matrix C of size (p*n^2 x n^2), 0 < p <= 1
  
 % TODO: Create an identity matrix of size (n^2 x n^2)
 % Write your code here... I = ????;
-
+I = eye(n^2, n^2);
  
 % TODO: Draw at random the indices of rows to be kept
 % Write your code here... keep_inds = ????;
-
+rows = p * n^2;
+keep_inds = sort( randperm( n^2 , rows  ) );
  
 % TODO: Create the sampling matrix C of size (p*n^2 x n^2) by keeping rows
 % from I that correspond to keep_inds
 % Write your code here... C = ????;
+C = zeros( rows, n^2);
 
+for i=1:rows
+    C(i,:) = I(keep_inds(i),:);
+end
+
+b = C*b0_noisy;
+
+%img_to_visualize = C'*b;
+%mat = vec2mat(img_to_visualize,40);
+%imagesc(mat);
+%colormap(gray);
  
 % TODO: Create a subsampled version of the noisy image
 % Write your code here... b = ????;
