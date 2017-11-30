@@ -91,8 +91,6 @@ for i=1:rows
     C(i,:) = I(keep_inds(i),:);
 end
 
-b = C*b0_noisy;
-
 %img_to_visualize = C'*b;
 %mat = vec2mat(img_to_visualize,40);
 %imagesc(mat);
@@ -100,6 +98,12 @@ b = C*b0_noisy;
  
 % TODO: Create a subsampled version of the noisy image
 % Write your code here... b = ????;
+b = C*b0_noisy;
+
+%img_to_visualize = C'*b;
+%mat = vec2mat(img_to_visualize,40);
+%imagesc(mat);
+%colormap(gray);
 
  
 end
