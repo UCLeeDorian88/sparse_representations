@@ -121,11 +121,12 @@ for experiment = 1:num_experiments
     
     % TODO: Compute the subsampled dictionary
     % Write your code here... A_eff = ????;
-    
+    A_eff = C*A;
+    s =10;
     
     % TODO: Compute the oracle estimation
     % Write your code here... x_oracle = ????;
-        
+    x_oracle = oracle(A_eff, b, s);
     
     % Compute the estimated image    
     b_oracle = A*x_oracle;
