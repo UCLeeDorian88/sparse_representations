@@ -60,27 +60,23 @@ for i=1:size(A,2)
         width      = round(randn_bounds(6,21));
         height     = round(randn_bounds(6,21));
 
-        top_left_x = round(randn_bounds(1,41));
-        top_left_y = round(randn_bounds(1,41));
+        x1 = round(randn_bounds(1,41));
+        y1 = round(randn_bounds(1,41));
         
-        bottom_right_x = top_left_x + width;
-        bottom_right_y = top_left_y + height;
+        x2 = x1 + width;
+        y2 = y1 + height;
 
-        if ( bottom_right_x > 40 )
+        if ( x2 > 40 )
             continue; 
         end
         
-        if ( bottom_right_y > 40 )
+        if ( y2 > 40 )
             continue; 
         end
         
         sign   = ( round(rand()) * 2 - 1 );
-        
-        for ( i = top_left_x:bottom_right_x )
-            for ( j = top_left_y:bottom_right_y )
-            atom(i,j) = sign;
-            end
-        end
+
+        atom( x1:x2, y1:y2 ) = sign;
         
         % Verify that the atom is not empty or nearly so
         n_orm = norm(atom(:));
@@ -121,13 +117,13 @@ for experiment = 1:num_experiments
     
     % TODO: Compute the subsampled dictionary
     % Write your code here... A_eff = ????;
+
     A_eff = C*A;
-    s =10;
     
     % TODO: Compute the oracle estimation
     % Write your code here... x_oracle = ????;
-    x_oracle = oracle(A_eff, b, s);
-    
+    x_oracle = oracle(A_eff, b, true_k);
+
     % Compute the estimated image    
     b_oracle = A*x_oracle;
     
