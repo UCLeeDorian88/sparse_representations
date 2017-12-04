@@ -34,14 +34,12 @@ nnz_vals = zeros(k,1);
 for i = 1:size(nnz_locs,2)
     nnz_vals( i ) = normrnd(0,1);
 end
- 
+
 % TODO: Create a k-sparse vector x0 of length m given the nnz_locs and nnz_vals
 % Write your code here... x0 = ????;
 x0 = zeros( m, 1);
 
-for i = 1:size(nnz_locs,2)
-    x0( nnz_locs(i) ) = nnz_vals(i);
-end
+x0( nnz_locs ) = nnz_vals;
  
 % TODO: Given A and x0, compute the signal b0
 % Write your code here... b0 = ????;
@@ -80,7 +78,7 @@ I = eye(n^2, n^2);
 % TODO: Draw at random the indices of rows to be kept
 % Write your code here... keep_inds = ????;
 rows = p * n^2;
-keep_inds = sort( randperm( n^2 , rows  ) );
+keep_inds = sort(randperm( n^2 , rows  ));
  
 % TODO: Create the sampling matrix C of size (p*n^2 x n^2) by keeping rows
 % from I that correspond to keep_inds
