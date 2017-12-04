@@ -13,16 +13,18 @@ function [A_eff_normalized, atoms_norm] = compute_effective_dictionary(C, A)
  
 % TODO: Compute the subsampled dictionary
 % Write your code here... A_eff = ????;
+A_eff = C*A;
 
  
 % TODO: Compute the norm of each atom
 % Write your code here...  atoms_norm = ????;
+atoms_norm = sqrt( diag(A_eff'*A_eff) ) + 1e-15;
 
- 
 % TODO: Normalize the columns of A_eff, avoid division by zero
 % Write your code here...  A_eff_normalized = ????;
+A_eff_normalized = A_eff / diag(atoms_norm);
 
-
- 
+% norm of columns t = sqrt( sum( A_eff_normalized.^2, 1));
+    
 end
 
