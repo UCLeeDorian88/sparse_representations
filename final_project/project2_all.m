@@ -295,20 +295,19 @@ ylabel('PSNR [dB]'); xlabel('Algorithm');
  
 % TODO: Set the noise std
 % Write your code here... sigma = ????;
-
+sigma = 0.05;
 
 
 % TODO: Set the cardinality of the representation
 % Write your code here... true_k = ????;
-
-
+true_k = 5;
 
 % TODO: Create a vector of increasing values of p in the range [0.4 1]. The
 % length of this vector equal to num_values_of_p = 7.
 % Write your code here... num_values_of_p = ????; p_vec = ????;
+num_values_of_p = 7;
 
-
-
+p_vec = [0.4, 0.4 + 1.0 * 0.085714, 0.4 + 2.0 * 0.085714, 0.4 + 3.0 * 0.085714, 0.4 + 4.0 * 0.085714, 0.4 + 5.0 * 0.085714, 0.4 + 6.0 * 0.085714];
 
 % We will repeat the experiment for num_experiments realizations
 num_experiments = 100;
@@ -342,8 +341,7 @@ for experiment = 1:num_experiments
                 
         % TODO: Compute the MSE of the estimate
         % Write your code here... cur_mse = ????;
-
-        
+        cur_mse = compute_mse(b0, b_omp);
                 
         % Compute the current normalized MSE and aggregate
         mse_omp_p(p_ind) = mse_omp_p(p_ind) + cur_mse / noise_std^2;
@@ -365,19 +363,24 @@ title(['OMP with k = ' num2str(true_k) ', Normalized-MSE vs. p'])
  
 % TODO: Set the cardinality of the representation
 % Write your code here... true_k = ????;
-
+true_k = 5;
 
 
 % TODO: Set the percentage of known data
 % Write your code here... p = ????;
-
+p = 0.5;
 
 
 % TODO: Create a vector of increasing values of sigma in the range [0.15 0.5].
 % The length of this vector equal to num_values_of_sigma = 10.
 % Write your code here... num_values_of_sigma = ????; sigma_vec = ????;
+num_values_of_sigma = 10;
 
+sigma_vec = zeros( 10, 1);
 
+for i=1:10
+    sigma_vec(i) = 0.15 + i * 0.035;
+end
 
 % Repeat the experiment for num_experiments realizations
 num_experiments = 100;
@@ -411,12 +414,11 @@ for experiment = 1:num_experiments
                 
         % TODO: Compute the MSE of the estimate
         % Write your code here... cur_mse = ????;
+        cur_mse = compute_mse(b0, b_omp);
 
-        
-        
         % Compute the current normalized MSE and aggregate
         mse_omp_sigma(sigma_ind) = mse_omp_sigma(sigma_ind) + cur_mse / noise_std^2;
- 
+        
     end
     
 end
