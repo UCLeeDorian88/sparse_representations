@@ -122,7 +122,9 @@ for experiment = 1:num_experiments
     
     % TODO: Compute the oracle estimation
     % Write your code here... x_oracle = ????;
-    x_oracle = oracle(A_eff, b, true_k);
+    
+    true_support = find( x0 );
+    x_oracle = oracle(A_eff, b, true_support);
 
     % Compute the estimated image    
     b_oracle = A*x_oracle;
