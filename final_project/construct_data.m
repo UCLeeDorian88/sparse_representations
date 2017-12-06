@@ -77,7 +77,7 @@ I = eye(n^2, n^2);
  
 % TODO: Draw at random the indices of rows to be kept
 % Write your code here... keep_inds = ????;
-rows = p * n^2;
+rows = min( n^2, round( p * n^2 ) );
 keep_inds = sort(randperm( n^2 , rows  ));
  
 % TODO: Create the sampling matrix C of size (p*n^2 x n^2) by keeping rows
