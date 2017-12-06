@@ -25,6 +25,9 @@ atoms_norm = sqrt( diag(A_eff'*A_eff) ) + 1e-15;
 A_eff_normalized = A_eff / diag(atoms_norm);
 
 % norm of columns t = sqrt( sum( A_eff_normalized.^2, 1));
+
+%requriement for the upper function to be able to unnormalize
+atoms_norm = atoms_norm';
     
 end
 
