@@ -8,8 +8,14 @@ function x = oracle(CA, b, s)
 % The solution is returned in the vector x
 
 % Initialize the vector x
-x = zeros(size(CA,2),1);
+[n,m] = size(CA);
 
+x = zeros(m,1);
+As = CA( :, s );
+x(s)=pinv(As)*b;
+
+
+    
 % TODO: Implement the Oracle estimator
 % Write your code here... x = ????;
 
