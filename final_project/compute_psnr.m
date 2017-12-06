@@ -18,8 +18,7 @@ dynamic_range   = max(y_original) - min(y_original);
 % TODO: Compute the Mean Squared Error (MSE)
 % Write your code here... mse_val = ????;
 
-norm_val = norm( y_original - y_estimated);
-mse_val = (1.0/40.0) * norm_val * norm_val;
+mse_val = compute_mse(y_original, y_estimated);
 
 % TODO: Compute the PSNR
 % Write your code here... psnr_val = ????;
