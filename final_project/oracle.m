@@ -9,16 +9,12 @@ function x = oracle(CA, b, s)
 
 % Initialize the vector x
 [n,m] = size(CA);
-
 x = zeros(m,1);
-As = CA( :, s );
-x(s)=pinv(As)*b;
-
-
     
 % TODO: Implement the Oracle estimator
 % Write your code here... x = ????;
-
+As = CA( :, s );
+x(s)=pinv(As)*b;
 
 end
 
