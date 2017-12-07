@@ -29,7 +29,7 @@ true_k = 10;
 % Base seed - A non-negative integer used to reproduce the results
 % TODO: Set an arbitrary value for base_seed
 % Write your code here... base_seed = ????;
-base_seed = 0;
+base_seed = 45;
 
 % Run the different algorithms for num_experiments and average the results
 num_experiments = 10;
@@ -307,7 +307,13 @@ true_k = 5;
 % Write your code here... num_values_of_p = ????; p_vec = ????;
 num_values_of_p = 7;
 
-p_vec = [0.4, 0.4 + 1.0 * 0.085714, 0.4 + 2.0 * 0.085714, 0.4 + 3.0 * 0.085714, 0.4 + 4.0 * 0.085714, 0.4 + 5.0 * 0.085714, 0.4 + 6.0 * 0.085714];
+%p_vec = [0.4, 0.4 + 1.0 * 0.085714, 0.4 + 2.0 * 0.085714, 0.4 + 3.0 * 0.085714, 0.4 + 4.0 * 0.085714, 0.4 + 5.0 * 0.085714, 0.4 + 6.0 * 0.085714];
+
+p_vec = zeros( num_values_of_p, 1);
+
+for i=1:num_values_of_p
+    p_vec(i) = 0.4 + (i - 1) * 0.6 / num_values_of_p;
+end
 
 % We will repeat the experiment for num_experiments realizations
 num_experiments = 100;
@@ -376,10 +382,10 @@ p = 0.5;
 % Write your code here... num_values_of_sigma = ????; sigma_vec = ????;
 num_values_of_sigma = 10;
 
-sigma_vec = zeros( 10, 1);
+sigma_vec = zeros( num_values_of_sigma, 1);
 
-for i=1:10
-    sigma_vec(i) = 0.15 + i * 0.035;
+for i=1:num_values_of_sigma
+    sigma_vec(i) = 0.15 + (i-1) * (0.5 - 0.15) / num_values_of_sigma;
 end
 
 % Repeat the experiment for num_experiments realizations
