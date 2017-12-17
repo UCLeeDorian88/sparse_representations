@@ -30,6 +30,7 @@ true_k = 10;
 % TODO: Set an arbitrary value for base_seed
 % Write your code here... base_seed = ????;
 base_seed = 45;
+%base_seed = 346;
 
 % Run the different algorithms for num_experiments and average the results
 num_experiments = 10;
