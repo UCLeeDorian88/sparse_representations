@@ -162,7 +162,7 @@ for experiment = 1:num_experiments
     for k_ind = 1:max_k
         
         % Compute the OMP estimation
-        x_omp = omp(A_eff_normalized, b, k_ind);
+        x_omp = omp(A_eff_normalized, b, k_ind, sigma);
         
         % Un-normalize the coefficients
         x_omp = x_omp./atoms_norm';
@@ -308,12 +308,10 @@ true_k = 5;
 % Write your code here... num_values_of_p = ????; p_vec = ????;
 num_values_of_p = 7;
 
-%p_vec = [0.4, 0.4 + 1.0 * 0.085714, 0.4 + 2.0 * 0.085714, 0.4 + 3.0 * 0.085714, 0.4 + 4.0 * 0.085714, 0.4 + 5.0 * 0.085714, 0.4 + 6.0 * 0.085714];
-
 p_vec = zeros( num_values_of_p, 1);
 
 for i=1:num_values_of_p
-    p_vec(i) = 0.4 + (i - 1) * 0.6 / num_values_of_p;
+    p_vec(i) = 0.4 + (i - 1) * 0.6 / ( num_values_of_p - 1.0 );
 end
 
 % We will repeat the experiment for num_experiments realizations
@@ -386,7 +384,7 @@ num_values_of_sigma = 10;
 sigma_vec = zeros( num_values_of_sigma, 1);
 
 for i=1:num_values_of_sigma
-    sigma_vec(i) = 0.15 + (i-1) * (0.5 - 0.15) / num_values_of_sigma;
+    sigma_vec(i) = 0.15 + (i-1) * (0.5 - 0.15) / (num_values_of_sigma-1);
 end
 
 % Repeat the experiment for num_experiments realizations

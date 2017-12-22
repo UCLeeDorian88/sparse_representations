@@ -1,4 +1,4 @@
-function x = omp(A, b, k)
+function x = omp(A, b, k, sigma)
 % OMP Solve the P0 problem via OMP
 %
 % Solves the following problem:
@@ -10,6 +10,11 @@ function x = omp(A, b, k)
 x = zeros(size(A,2),1);
 r = b;
 S = [];
+
+%[n,m] = size(A);
+
+%function of the noise
+epsilon = 1e-8;
 
 for i=1:k
     % Choosing next atom:
@@ -25,7 +30,7 @@ for i=1:k
     % Residual update:
     r = b-A*x;
     
-    if norm(r)<1e-8
+    if norm(r)<epsilon
         break;
     end
 end
