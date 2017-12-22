@@ -71,6 +71,16 @@ for i = 1:max_admm_iters
     % Write your code here... v = ????;
     v = soft_thresh( x + u , lambda);
 
+    %soft threshold
+    %xu = x + u;
+    %b = xu <= -lambda;
+    %t = xu >= lambda;
+    %z = abs(xu) < lambda;
+    %v(b) = xu(b) + lambda;
+    %v(z) = 0;
+    %v(t) = xu(t) - lambda;
+
+
     % TODO: u-update according to the ADMM formula
     % Write your code here... u = ????;
     u = u + x - v;
