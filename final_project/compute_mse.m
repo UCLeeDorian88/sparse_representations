@@ -12,7 +12,7 @@ y_original      = y_original(:);
 y_estimated     = y_estimated(:);
 
 norm_val = norm( y_original - y_estimated);
-mse_val = (1.0/40.0) * norm_val * norm_val;
+mse_val = (1.0/( 40.0 * 40.0) ) * norm_val * norm_val;
 
 end
 
